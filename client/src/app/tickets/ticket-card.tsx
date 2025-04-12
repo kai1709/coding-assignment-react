@@ -1,7 +1,7 @@
 import { Ticket, User } from "@acme/shared-models";
 import { Collapse } from "antd";
 import styles from './tickets.module.css';
-import { TICKET_STATUSES } from "../constants";
+import { TICKET_STATUSES, UNASSIGNED_TEXT } from "../constants";
 import { EditOutlined } from "@ant-design/icons";
 import { Link, useNavigation } from "react-router-dom";
 
@@ -40,7 +40,7 @@ const TicketCard = ({ data, users }: TicketCard) => {
   const Content = () => (
     <div>
       <div className={styles['ticket-assignee']}>
-        Assignee: <span>{assignee ? assignee.name : 'Not assigned'}</span>
+        Assignee: <span>{assignee ? assignee.name : UNASSIGNED_TEXT}</span>
       </div>
       <div className={styles['ticket-content']}>
         {data.description}

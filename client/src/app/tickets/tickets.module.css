@@ -1,4 +1,7 @@
 .tickets {
+  max-width: 740px;
+  margin: auto;
+  margin-top: 20px;
 }
 
 .ticket-header {
@@ -33,6 +36,7 @@
 
 .flex {
   display: flex;
+  align-items: center;
 }
 
 .flex-1 {
