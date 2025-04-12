@@ -9,3 +9,8 @@ export type Ticket = {
   assigneeId: null | number;
   completed: boolean;
 };
+
+export type UserContextType = {
+  state: any;
+  actions: any;
+}

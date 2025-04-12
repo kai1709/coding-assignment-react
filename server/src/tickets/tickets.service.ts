@@ -24,7 +24,7 @@ export class TicketsService {
 
   private nextId = 3;
 
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService) { }
 
   async tickets(): Promise<Ticket[]> {
     return this.storedTickets;
@@ -42,6 +42,7 @@ export class TicketsService {
       completed: false,
     };
 
+    console.log({ newTicket })
     this.storedTickets.push(newTicket);
 
     return newTicket;

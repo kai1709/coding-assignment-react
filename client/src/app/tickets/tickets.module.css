@@ -1,2 +1,74 @@
 .tickets {
 }
+
+.ticket-header {
+  display: flex;
+}
+
+.ticket-header-label {
+  flex: 1;
+  font-weight: bold;
+}
+.status-completed {
+  color: #90c67c;
+  font-weight: bold;
+  margin-left: 6px;
+}
+
+.status-incompleted {
+  color: #e83f25;
+  font-weight: bold;
+  margin-left: 6px;
+}
+
+.ticket-content {
+  margin-top: 20px;
+}
+.ticket-assignee {
+  font-weight: bold;
+  span {
+    font-weight: normal;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.status-select {
+  width: 200px;
+  margin-right: 20px;
+}
+
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+}
+
+.new-ticket-footer {
+  display: flex;
+  margin-top: 20px;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.cancel-btn {
+  margin-right: 12px;
+}
+
+.error-text {
+  color: red
+}
+
+.submit-btn {
+  min-width: 100px;
+}
+
+.edit-btn {
+  margin-left: 20px;
+}
