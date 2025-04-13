@@ -42,7 +42,6 @@ export class TicketsService {
       completed: false,
     };
 
-    console.log({ newTicket })
     this.storedTickets.push(newTicket);
 
     return newTicket;

@@ -17,8 +17,8 @@ export function Tickets() {
   const userContext = useContext(UserContext)
   const [isModalNewTicketOpen, setIsModalNewTicketOpen] = useState(false)
   const users = userContext.state.users || []
-  // Very basic way to synchronize state with server.
-  // Feel free to use any state/fetch library you want (e.g. react-query, xstate, redux, etc.).
+
+
   async function fetchTickets() {
     if (isLoading) return
     setIsLoading(true)
@@ -55,7 +55,7 @@ export function Tickets() {
         </div>
         <div className={styles['flex']}>
           <div>
-            <Select onChange={onChangeFilter} value={filterValue} className={styles['status-select']}>
+            <Select onChange={onChangeFilter} value={filterValue} data-testid="status-select" className={styles['status-select']}>
               <Select.Option value="all">All</Select.Option>
               <Select.Option value="completed">Completed</Select.Option>
               <Select.Option value="incompleted">Incompleted</Select.Option>
@@ -76,7 +76,7 @@ export function Tickets() {
             </div>
           )}
           {ticketsForRendering.map((t, index) => (
-            <div key={t.id} style={index !== ticketsForRendering.length - 1 ? { marginBottom: 20 } : {}}>
+            <div key={t.id} data-testid="ticket-item" style={index !== ticketsForRendering.length - 1 ? { marginBottom: 20 } : {}}>
               <TicketCard data={t} users={users} />
             </div>
           ))}

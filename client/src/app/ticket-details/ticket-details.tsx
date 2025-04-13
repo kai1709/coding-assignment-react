@@ -54,7 +54,7 @@ const TicketDetailsContent = () => {
   }
 
   const warnUnassign = () => {
-    modal.warning({ title: 'Unassign', content: 'Are you sure that you want to unassign this user?', okText: 'Confirm', cancelText: 'Cancel', onOk: handleUnassign });
+    modal.warning({ title: 'Unassign', content: 'Are you sure that you want to unassign this user?', okText: 'Confirm', cancelText: 'Cancel', onOk: handleUnassign, okCancel: true });
   }
 
   const handleMarkAction = async (action: string) => {
@@ -67,14 +67,12 @@ const TicketDetailsContent = () => {
   }
 
   const warnMarkAction = (action: string) => {
-    modal.warning({ title: `Mark as ${action}`, content: `Are you sure that you want to mark this ticket as ${action}?`, okText: 'Confirm', cancelText: 'Cancel', onOk: () => handleMarkAction(action) });
+    modal.warning({ title: `Mark as ${action}`, content: `Are you sure that you want to mark this ticket as ${action}?`, okText: 'Confirm', cancelText: 'Cancel', onOk: () => handleMarkAction(action), okCancel: true });
   }
 
   useEffect(() => {
-    if (id) {
       getTicketDetail()
-    }
-  }, [id])
+  }, [])
 
   if (isLoading) {
     return <div className={styles['loading-container']}><Spin size='large' /></div>
@@ -101,7 +99,7 @@ const TicketDetailsContent = () => {
         <div className={styles['back-btn']}>
           <Link to="/"><Button variant='outlined' ><LeftOutlined /></Button></Link>
         </div>
-        <Tag color='processing' className={styles['title']}>Ticket {ticketDetail?.id}</Tag>
+        <Tag color='processing' data-testid="title" className={styles['title']}>Ticket {ticketDetail?.id}</Tag>
       </div>
       <Card className={styles['ticket-card']}>
         <div className={styles['ticket-action']}>
@@ -130,14 +128,14 @@ const TicketDetailsContent = () => {
             <div className={styles['assignee-user']}>
               {ticketDetail?.completed ? (
                 <>
-                  Completed
+                  <span data-testid="ticket-status">Completed</span>
                   <div>
                     <Button variant='outlined' color='danger' onClick={() => warnMarkAction('incomplete')}>Mark as Incomplete</Button>
                   </div>
                 </>
               ) : (
                 <>
-                  Incompleted
+                  <span data-testid="ticket-status">Incompleted</span>
                   <div >
                     <Button variant='outlined' color='green' onClick={() => warnMarkAction('complete')}>Mark as Complete</Button>
                   </div>
@@ -149,7 +147,7 @@ const TicketDetailsContent = () => {
         </div>
         <div>
           <strong>Description:</strong>
-          <div>
+          <div data-testid="description">
             {ticketDetail?.description}
           </div>
         </div>
